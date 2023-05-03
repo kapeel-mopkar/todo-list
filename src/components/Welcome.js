@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import "./welcome.css";
-import TodoSVG from '../assets/todo-svg.svg'
 
 export default function Welcome() {
   const [email, setEmail] = useState("");
@@ -39,12 +37,14 @@ export default function Welcome() {
   };
 
   const handleSignIn = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
+    signInWithEmailAndPassword(auth, email, password).then(() => {
         navigate("/homepage");
-      })
-      .catch((err) => alert(err.message));
+      }).catch((err) => alert(err.message));
   };
+
+  const handleToggleRegisterLogin = () => {
+    setIsRegistering(!isRegistering);
+  } 
 
   const handleRegister = () => {
     if (registerInformation.email !== registerInformation.confirmEmail) {
@@ -68,61 +68,61 @@ export default function Welcome() {
   };
 
   return (
-    <div className="welcome">
-    <img src={TodoSVG} className="todo-svg" />
-      <h1>Todo-List</h1>
-      <div className="login-register-container">
+      <div className="form">
         {isRegistering ? (
-          <>
-            <input
-              type="email"
-              placeholder="Email"
-              value={registerInformation.email}
-              onChange={(e) =>
-                setRegisterInformation({
-                  ...registerInformation,
-                  email: e.target.value
-                })
-              }
-            />
-            <input
-              type="email"
-              placeholder="Confirm Email"
-              value={registerInformation.confirmEmail}
-              onChange={(e) =>
-                setRegisterInformation({
-                  ...registerInformation,
-                  confirmEmail: e.target.value
-                })
-              }
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={registerInformation.password}
-              onChange={(e) =>
-                setRegisterInformation({
-                  ...registerInformation,
-                  password: e.target.value
-                })
-              }
-            />
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={registerInformation.confirmPassword}
-              onChange={(e) =>
-                setRegisterInformation({
-                  ...registerInformation,
-                  confirmPassword: e.target.value
-                })
-              }
-            />
-            <button className="sign-in-register-button" onClick={handleRegister}>Register</button>
-            <button className="create-account-button" onClick={() => setIsRegistering(false)}>Go back</button>
-          </>
+         <>
+         <div className="register-form">
+           <input
+             type="email"
+             placeholder="Email"
+             value={registerInformation.email}
+             onChange={(e) =>
+               setRegisterInformation({
+                 ...registerInformation,
+                 email: e.target.value
+               })
+             }
+           />
+           <input
+             type="email"
+             placeholder="Confirm Email"
+             value={registerInformation.confirmEmail}
+             onChange={(e) =>
+               setRegisterInformation({
+                 ...registerInformation,
+                 confirmEmail: e.target.value
+               })
+             }
+           />
+           <input
+             type="password"
+             placeholder="Password"
+             value={registerInformation.password}
+             onChange={(e) =>
+               setRegisterInformation({
+                 ...registerInformation,
+                 password: e.target.value
+               })
+             }
+           />
+           <input
+             type="password"
+             placeholder="Confirm Password"
+             value={registerInformation.confirmPassword}
+             onChange={(e) =>
+               setRegisterInformation({
+                 ...registerInformation,
+                 confirmPassword: e.target.value
+               })
+             }
+           />
+           <button onClick={handleRegister}>create</button>
+           <p className="message">Already registered? <a href="javascript:void(0)" onClick={handleToggleRegisterLogin}>Sign In</a></p>
+         </div>
+         </>
         ) : (
           <>
+          <div className="login-form">
             <input type="email" placeholder="Email" onChange={handleEmailChange} value={email} />
             <input
               type="password"
@@ -130,18 +130,13 @@ export default function Welcome() {
               value={password}
               placeholder="Password"
             />
-            <button className="sign-in-register-button" onClick={handleSignIn}>
-              Sign In
+            <button onClick={handleSignIn}>
+              login
             </button>
-            <button
-              className="create-account-button"
-              onClick={() => setIsRegistering(true)}
-            >
-              Create an account
-            </button>
+            <p className="message">Not registered? <a href="javascript:void(0)" onClick={handleToggleRegisterLogin}>Create an account</a></p>
+          </div>
           </>
         )}
       </div>
-    </div>
   );
 }
