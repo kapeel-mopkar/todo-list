@@ -1,69 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.welcome {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(122.19deg, #da2079 1.89%, #2a00d5 113.56%);
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-.welcome > h1 {
-  font-family: "Changa One";
-  font-weight: normal;
-  font-size: 80px;
-  left: 90px;
-  top: 85px;
-  position: absolute;
-  color: white;
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
-
-.login-register-container {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px 50px;
-  left: 150px;
-  top: 200px;
-  background: #ffffff;
-}
-
-.login-register-container > input {
-  height: 30px;
-  width: 80%;
-  border: 1px solid gray;
-  outline: none;
-  margin-bottom: 15px;
-  font-size: 25px;
-  padding: 5px;
-}
-
-.login-register-container > button {
-  padding: 5px 20px;
-  border: none;
-  margin-bottom: 5px;
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
   cursor: pointer;
 }
-
-.sign-in-register-button {
-  background: linear-gradient(122.19deg, #da2079 1.89%, #2a00d5 113.56%);
-  font-size: 20px;
-  margin-top: 10px;
-  font-family: "Changa One";
-  font-weight: normal;
-  color: white;
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
 }
-
-.create-account-button {
-  background: none;
-  margin-top: 10px;
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
 }
-
-.todo-svg {
-  position: absolute;
-  top: 50px;
-  right: 200px;
-  transform: scale(0.9);
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+  cursor: pointer;
 }
