@@ -26,7 +26,7 @@ export default function Welcome() {
         navigate("/homepage");
       }
     });
-  }, []);
+  });
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -117,7 +117,7 @@ export default function Welcome() {
              }
            />
            <button onClick={handleRegister}>create</button>
-           <p className="message">Already registered? <a href="javascript:void(0)" onClick={handleToggleRegisterLogin}>Sign In</a></p>
+           <p className="message">Already registered? <button className="btn-link" onClick={handleToggleRegisterLogin}>Sign In</button></p>
          </div>
          </>
         ) : (
@@ -133,7 +133,7 @@ export default function Welcome() {
             <button onClick={handleSignIn}>
               login
             </button>
-            <p className="message">Not registered? <a href="javascript:void(0)" onClick={handleToggleRegisterLogin}>Create an account</a></p>
+            <p className="message">Not registered? <button className="btn-link" onClick={handleToggleRegisterLogin}>Create an account</button></p>
           </div>
           </>
         )}

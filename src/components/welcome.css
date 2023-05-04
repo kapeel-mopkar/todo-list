@@ -53,3 +53,18 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.form .btn-link{
+  text-transform: none;
+  background-color: white;
+  border: 0px solid black;
+  color: green;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  width: fit-content;
+  padding: 0px;
+}
+
+.form .btn-link:hover,.form .btn-link:active,.form .btn-link:focus {
+  background: none;
+}
