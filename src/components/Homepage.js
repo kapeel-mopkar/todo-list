@@ -37,7 +37,7 @@ export default function Homepage() {
         navigate("/");
       }
     });
-  }, []);
+  });
 
   // update
   const handleUpdate = (todo) => {
@@ -117,6 +117,7 @@ export default function Homepage() {
       if (data !== null) {
         Object.values(data).map((todo) => {
           setTodos((oldArray) => (!todo.completed ? [...oldArray, todo] : [...oldArray]));
+          return todo;
         });
       }
     });
@@ -131,6 +132,7 @@ export default function Homepage() {
       if (data !== null) {
         Object.values(data).map((todo) => {
           setTodos((oldArray) => (todo.completed ? [...oldArray, todo] : [...oldArray]));
+          return todo;
         });
       }
     });
@@ -144,6 +146,7 @@ export default function Homepage() {
       if (data !== null) {
         Object.values(data).map((todo) => {
           setTodos((oldArray) => [...oldArray, todo]);
+          return todo;
         });
       }
     });
